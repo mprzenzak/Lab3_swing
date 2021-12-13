@@ -29,7 +29,7 @@ public class Login extends JFrame {
 
     public Login(String title) {
         super(title);
-        readData("./src/Users.csv");
+        //readData("./src/Users.csv");
         container.setLayout(null);
         container.setBackground(Color.gray);
         buildFrame();
