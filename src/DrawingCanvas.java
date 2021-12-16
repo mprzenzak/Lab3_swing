@@ -22,10 +22,10 @@ public class DrawingCanvas extends JPanel implements KeyListener, ActionListener
         for (int i = 0; i < 10; i++) {
             switch (choice) {
                 case 1:
-                    g.drawRect(10 + i * 10, 10 + i * 10, 50 + i * 10, 50 + i * 10);
+                    g.drawRect(10, 10, 50, 50);
                     break;
                 case 2:
-                    g.drawOval(10 + i * 10, 10 + i * 10, 50 + i * 10, 50 + i * 10);
+                    g.drawOval(10, 10, 50, 50);
                     break;
             }
         }
