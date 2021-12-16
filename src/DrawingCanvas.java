@@ -33,7 +33,6 @@ public class DrawingCanvas extends JPanel implements KeyListener, ActionListener
 
     @Override
     public void keyTyped(KeyEvent e) {
-        System.out.println("okkkkkkkkk");
         if (e.getKeyChar() == 107) {
             //K - kwadrat
             choice = 1;
