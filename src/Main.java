@@ -1,14 +1,13 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Login window = new Login();
+                    EscapingButton window = new EscapingButton();
                     window.setVisible(true);
-                    window.setBounds(10,10,370,600);
+                    window.setBounds(10,10,800, 800);
                     window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     window.setResizable(false);
                 } catch (Exception e) {
