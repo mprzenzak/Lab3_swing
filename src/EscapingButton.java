@@ -79,15 +79,11 @@ public class EscapingButton extends JFrame implements KeyListener {
         if (e.getKeyChar() == 107) {
             //K - kwadrat
             DrawingCanvas drawingCanvas = new DrawingCanvas(1);
-            //drawingCanvas.choice = 1;
-
             drawingCanvas.setVisible(true);
             drawingCanvas.setBounds(10, 10, 800, 800);
         } else if (e.getKeyChar() == 111) {
             //O - koło
             DrawingCanvas drawingCanvas = new DrawingCanvas(2);
-            //drawingCanvas.choice = 1;
-
             drawingCanvas.setVisible(true);
             drawingCanvas.setBounds(10, 10, 800, 800);
         }
