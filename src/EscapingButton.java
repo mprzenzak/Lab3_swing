@@ -1,16 +1,13 @@
 import javax.swing.*;
-import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class EscapingButton extends JFrame implements ActionListener {
+public class EscapingButton extends JFrame implements KeyListener {
     Container container = getContentPane();
     private final JButton loginButton = new JButton("Złap mnie!");
     private final JButton resetButton = new JButton("Reset");
-    private final JButton drawingCanvasButton = new JButton("Rysowanie kształtów");
-    private final ArrayList<String> userInfo = new ArrayList<>();
-    private final HashMap<String, String> usersMap = new HashMap();
+    private final JLabel drawingInfoLabel = new JLabel("Naciśnij k, żeby narysowac kwadrat lub o, żeby narysowac koło");
 
     public EscapingButton() throws HeadlessException {
         this("undefined");
@@ -18,6 +15,10 @@ public class EscapingButton extends JFrame implements ActionListener {
 
     public EscapingButton(String title) {
         super(title);
+        setFocusable(true);
+        requestFocus();
+        requestFocusInWindow();
+        this.addKeyListener(this);
         container.setLayout(null);
         container.setBackground(Color.white);
         buildFrame();
@@ -54,9 +55,9 @@ public class EscapingButton extends JFrame implements ActionListener {
     protected void buildFrame() {
         this.setBounds(10, 10, 800, 800);
         this.setResizable(false);
+        drawingInfoLabel.setBounds(50, 30, 500, 30);
         loginButton.setBounds(50, 300, 100, 30);
         resetButton.setBounds(650, 30, 100, 30);
-        drawingCanvasButton.setBounds(600, 70, 200, 30);
         resetButton.addActionListener(e -> {
             clear();
         });
@@ -64,10 +65,9 @@ public class EscapingButton extends JFrame implements ActionListener {
 
 
     public void addComponentsToContainer() {
+        container.add(drawingInfoLabel);
         container.add(loginButton);
         container.add(resetButton);
-        container.add(drawingCanvasButton);
-        drawingCanvasButton.addActionListener(this);
     }
 
     private void clear() {
@@ -75,15 +75,31 @@ public class EscapingButton extends JFrame implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        Object eventSource = e.getSource();
+    public void keyTyped(KeyEvent e) {
+        if (e.getKeyChar() == 107) {
+            //K - kwadrat
+            DrawingCanvas drawingCanvas = new DrawingCanvas(1);
+            //drawingCanvas.choice = 1;
 
-        if(eventSource == drawingCanvasButton){
-            DrawingCanvas drawingCanvas = new DrawingCanvas();
             drawingCanvas.setVisible(true);
-            drawingCanvas.setBounds(10,10,800, 800);
-//            drawingCanvas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            drawingCanvas.setResizable(false);
+            drawingCanvas.setBounds(10, 10, 800, 800);
+        } else if (e.getKeyChar() == 111) {
+            //O - koło
+            DrawingCanvas drawingCanvas = new DrawingCanvas(2);
+            //drawingCanvas.choice = 1;
+
+            drawingCanvas.setVisible(true);
+            drawingCanvas.setBounds(10, 10, 800, 800);
         }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
     }
 }

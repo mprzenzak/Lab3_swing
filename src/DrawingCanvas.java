@@ -1,19 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.awt.Graphics;
 import javax.swing.JFrame;
 
-public class DrawingCanvas extends JPanel implements KeyListener, ActionListener {
+public class DrawingCanvas extends JPanel{
     JFrame f = new JFrame();
     int choice;
 
-    public DrawingCanvas() throws HeadlessException {
-        this.addKeyListener(this);
+    public DrawingCanvas(int choice) throws HeadlessException {
+        this.choice = choice;
         f.add(this);
         f.setSize(400, 400);
         f.setVisible(true);
-        f.addKeyListener(this);
     }
 
 
@@ -29,30 +27,5 @@ public class DrawingCanvas extends JPanel implements KeyListener, ActionListener
                     break;
             }
         }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if (e.getKeyChar() == 107) {
-            //K - kwadrat
-            choice = 1;
-        } else if (e.getKeyChar() == 111) {
-            //O - koło
-            choice = 2;
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
     }
 }
